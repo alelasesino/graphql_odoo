@@ -1,4 +1,4 @@
-from graphene import Mutation, String
+from graphene import Mutation, Int, Boolean
 from ..types.farm import Farm, InputFarm
 
 class CreateFarm(Mutation):
@@ -18,6 +18,16 @@ class CreateFarm(Mutation):
             farm.pop('parcels')
 
         env = info.context["env"]
-        farm_created = env["agro.farm"].create(farm)
+        return env["agro.farm"].create(farm)
 
-        return farm_created
+
+class RemoveFarm(Mutation):
+    class Arguments:
+        id = Int(required=True)
+
+    removed = Boolean()
+
+    @staticmethod
+    def mutate(self, info, id):
+        env = info.context["env"]
+        return RemoveFarm(removed=env["agro.farm"].browse(id).unlink())
