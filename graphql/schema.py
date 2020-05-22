@@ -55,39 +55,6 @@ class Query(graphene.ObjectType):
     products = ProductsQuery.Field()
     product = ProductQuery.Field()
 
-    all_partners = graphene.List(
-        graphene.NonNull(Partner),
-        required=True,
-        companies_only=graphene.Boolean(),
-        limit=graphene.Int(),
-        offset=graphene.Int(),
-    )
-
-    reverse = graphene.String(
-        required=True,
-        description="Reverse a string",
-        word=graphene.String(required=True),
-    )
-
-    error_example = graphene.String()
-
-    @staticmethod
-    def resolve_all_partners(root, info, companies_only=False, limit=None, offset=None):
-        domain = []
-        if companies_only:
-            domain.append(("is_company", "=", True))
-        return info.context["env"]["res.partner"].search(
-            domain, limit=limit, offset=offset
-        )
-
-    @staticmethod
-    def resolve_reverse(root, info, word):
-        return word[::-1]
-
-    @staticmethod
-    def resolve_error_example(root, info):
-        raise UserError(_("UserError example"))
-
 
 class CreatePartner(graphene.Mutation):
     class Arguments:
