@@ -1,4 +1,4 @@
-from graphene import ObjectType, String, Int, DateTime, List, Float
+from graphene import ObjectType, String, Int, DateTime, List
 from ..types.parcel import Parcel 
 
 
