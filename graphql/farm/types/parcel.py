@@ -7,3 +7,9 @@ class Parcel(OdooObjectType):
     create_date = DateTime()
     number = Int()
     description = String()
+
+
+class InputParcel(InputObjectType):
+    name = String()
+    number = Int()
+    description = String()
