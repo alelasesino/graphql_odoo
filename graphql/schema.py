@@ -2,10 +2,14 @@ import graphene
 from odoo import _
 from odoo.exceptions import UserError
 from odoo.addons.graphql_base import OdooObjectType
+
 from .farm.queries.farm import FarmQuery
 from .farm.queries.farms import FarmsQuery
+
 from .farm.queries.parcel import ParcelQuery
 from .farm.queries.parcels import ParcelsQuery
+
+from .reception.queries.reception import ReceptionQuery
 
 class Country(OdooObjectType):
     code = graphene.String(required=True)
@@ -40,6 +44,8 @@ class Query(graphene.ObjectType):
 
     parcels = ParcelsQuery.Field()
     parcel = ParcelQuery.Field()
+
+    reception = ReceptionQuery.Field()
 
     all_partners = graphene.List(
         graphene.NonNull(Partner),
