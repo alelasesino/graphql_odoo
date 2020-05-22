@@ -22,7 +22,7 @@
     "development_status": "Beta",
     
     # any module necessary for this one to work correctly
-    'depends': ['base', 'graphql_base'],
+    'depends': ['base', 'graphql_base', 'agro_fres'],
 
     # external dependencies
     'external_dependencies': {'python': ['graphene']},
