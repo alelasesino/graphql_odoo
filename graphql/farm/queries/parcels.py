@@ -2,6 +2,7 @@ from graphene import List
 from ... import FieldResolver
 from ..types.parcel import Parcel
 
+
 class ParcelsQuery(FieldResolver):
 
     Output = List(Parcel)
