@@ -1,7 +1,7 @@
-from graphene import ObjectType, String, Int, DateTime, List, Float
+from odoo.addons.graphql_base import OdooObjectType
+from graphene import String, Int, DateTime, List, Float, InputObjectType
 
-
-class Parcel(ObjectType):
+class Parcel(OdooObjectType):
     id = Int()
     name = String()
     create_date = DateTime()

@@ -1,8 +1,9 @@
-from graphene import ObjectType, String, Int, DateTime, List
+from odoo.addons.graphql_base import OdooObjectType
+from graphene import String, Int, DateTime, List
 from .product_reception import ProductReception
 
 
-class Reception(ObjectType):
+class Reception(OdooObjectType):
     id = Int()
     display_name = String()
     scheduled_date = DateTime()

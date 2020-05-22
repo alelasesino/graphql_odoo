@@ -1,7 +1,8 @@
-from graphene import ObjectType, String, Int, Float
+from odoo.addons.graphql_base import OdooObjectType
+from graphene import String, Int, Float
 
 
-class ProductReception(ObjectType):
+class ProductReception(OdooObjectType):
     id = Int()
     code = String()
     display_name = String()
