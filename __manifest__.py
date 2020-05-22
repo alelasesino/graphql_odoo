@@ -1,35 +1,36 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "graphql_odoo",
+    'name': "GraphQL Odoo",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Este modulo crea una interfaz de programación de aplicaciones (API)""",
 
     'description': """
-        Long description of module's purpose
+        El modulo crea una interfaz para que aplicaciones externas puedan interactuar con los datos
+        de Odoo
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'author': "Alejandro Pérez Álvarez",
+    'website': "http://www.ieslamarisma.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'API',
     'version': '0.1',
-
+    "license": "LGPL-3",
+    "development_status": "Beta",
+    
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'graphql_base'],
+
+    # external dependencies
+    'external_dependencies': {'python': ['graphene']},
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
     ],
 }
