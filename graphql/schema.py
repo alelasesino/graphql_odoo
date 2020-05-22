@@ -12,6 +12,9 @@ from .farm.queries.parcels import ParcelsQuery
 from .reception.queries.reception import ReceptionQuery
 from .reception.queries.receptions import ReceptionsQuery
 
+from .product.queries.product import ProductQuery
+from .product.queries.products import ProductsQuery
+
 class Country(OdooObjectType):
     code = graphene.String(required=True)
     name = graphene.String(required=True)
@@ -48,6 +51,9 @@ class Query(graphene.ObjectType):
 
     receptions = ReceptionsQuery.Field()
     reception = ReceptionQuery.Field()
+
+    products = ProductsQuery.Field()
+    product = ProductQuery.Field()
 
     all_partners = graphene.List(
         graphene.NonNull(Partner),
