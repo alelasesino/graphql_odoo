@@ -11,6 +11,7 @@ from .farm.queries.parcels import ParcelsQuery
 
 from .reception.queries.reception import ReceptionQuery
 from .reception.queries.receptions import ReceptionsQuery
+from .reception.mutations.reception import CreateReception
 
 from .product.queries.product import ProductQuery
 from .product.queries.products import ProductsQuery
@@ -34,6 +35,8 @@ class Query(ObjectType):
 class Mutation(ObjectType):
     create_farm = CreateFarm.Field()
     remove_farm = RemoveFarm.Field()
+
+    create_reception = CreateReception.Field()
 
 
 schema = Schema(query=Query, mutation=Mutation)
