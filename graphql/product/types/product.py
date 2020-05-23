@@ -1,5 +1,5 @@
 from odoo.addons.graphql_base import OdooObjectType
-from graphene import String, Int
+from graphene import String, Int, Float
 
 
 class Product(OdooObjectType):
@@ -13,3 +13,9 @@ class Product(OdooObjectType):
     @staticmethod
     def resolve_image(root, info):
         return root.image_512
+
+
+class InputProduct(InputObjectType):
+    id = Int()
+    lot = String()
+    quantity = Float()
