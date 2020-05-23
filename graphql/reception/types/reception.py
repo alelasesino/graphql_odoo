@@ -1,7 +1,7 @@
 from odoo.addons.graphql_base import OdooObjectType
 from graphene import String, Int, DateTime, List
 from .product_reception import ProductReception
-
+from ...product.types.product import InputProduct
 
 class Reception(OdooObjectType):
     id = Int()
@@ -22,3 +22,8 @@ class Reception(OdooObjectType):
     @staticmethod
     def resolve_receive_products(root, info):
         return root.move_ids_without_package.move_line_nosuggest_ids
+
+
+class InputReception(InputObjectType):
+    farm_id = Int()
+    products = List(InputProduct)
