@@ -1,5 +1,5 @@
 from odoo.addons.graphql_base import OdooObjectType
-from graphene import String, Int, Float
+from graphene import InputObjectType, String, Int, Float
 
 
 class Product(OdooObjectType):
