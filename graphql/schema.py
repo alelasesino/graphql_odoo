@@ -33,6 +33,7 @@ class Query(ObjectType):
 
 
 class Mutation(ObjectType):
+    
     create_farm = CreateFarm.Field()
     remove_farm = RemoveFarm.Field()
 
