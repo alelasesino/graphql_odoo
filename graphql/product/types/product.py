@@ -12,7 +12,7 @@ class Product(OdooObjectType):
 
     @staticmethod
     def resolve_image(root, info):
-        return root.image_512
+        return root.image_512.decode("utf-8") 
 
 
 class InputProduct(InputObjectType):
