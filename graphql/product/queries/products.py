@@ -8,4 +8,4 @@ class ProductsQuery(FieldResolver):
     Output = List(Product)
 
     def resolve(self, info):
-        return info.context["env"]["product.product"].search([])
+        return info.context["env"]["product.product"].search([], order='categ_id desc')

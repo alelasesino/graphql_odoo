@@ -8,4 +8,4 @@ class FarmsQuery(FieldResolver):
     Output = List(Farm)
 
     def resolve(self, info):
-        return info.context["env"]["agro.farm"].search([])
+        return info.context["env"]["agro.farm"].search([], order='name asc')
