@@ -1,6 +1,7 @@
 from graphene import Mutation, Int, Boolean
 from ..types.farm import Farm, InputFarm
 
+
 class CreateFarm(Mutation):
     class Arguments:
         farm = InputFarm(required=True)
