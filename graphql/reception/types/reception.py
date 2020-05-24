@@ -3,6 +3,7 @@ from graphene import InputObjectType, String, Int, DateTime, List
 from .product_reception import ProductReception
 from ...product.types.product import InputProduct
 
+
 class Reception(OdooObjectType):
     id = Int()
     display_name = String()
@@ -21,7 +22,10 @@ class Reception(OdooObjectType):
 
     @staticmethod
     def resolve_receive_products(root, info):
-        return root.move_ids_without_package.move_line_nosuggest_ids
+        products = root.move_ids_without_package.move_line_nosuggest_ids
+        if not 'args' in info.context:
+            return products
+        return filter(lambda product: product.lot_id.name == info.context["args"]["lot_filter"], products)
 
 
 class InputReception(InputObjectType):
