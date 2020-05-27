@@ -1,7 +1,8 @@
 from graphene import Int
 from ... import FieldResolver
 from ..types.farm import Farm
-
+from odoo.exceptions import UserError
+from odoo import _
 
 class FarmQuery(FieldResolver):
     class Arguments:
@@ -10,4 +11,7 @@ class FarmQuery(FieldResolver):
     Output = Farm
 
     def resolve(self, info, id):
-        return info.context["env"]["agro.farm"].search([('id', '=', id)]) or None
+        farm = info.context["env"]["agro.farm"].search([('id', '=', id)])
+        if farm:
+            return farm
+        raise UserError(_(f"Farm with ID: {id} not exist!"))
