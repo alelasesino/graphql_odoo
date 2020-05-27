@@ -3,6 +3,7 @@ from ..types.farm import Farm, InputFarm
 from odoo.exceptions import UserError
 from odoo import _
 
+
 class CreateFarm(Mutation):
     class Arguments:
         farm = InputFarm(required=True)
