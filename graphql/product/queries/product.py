@@ -1,6 +1,8 @@
 from graphene import Int
 from ... import FieldResolver
 from ..types.product import Product
+from odoo.exceptions import UserError
+from odoo import _
 
 
 class ProductQuery(FieldResolver):
@@ -10,4 +12,7 @@ class ProductQuery(FieldResolver):
     Output = Product
 
     def resolve(self, info, id):
-        return info.context["env"]["product.product"].search([('id', '=', id)]) or None
+        product = info.context["env"]["product.product"].search([('id', '=', id)])
+        if product:
+            return product
+        raise UserError(_(f"Product with ID: {id} not exist!"))
