@@ -1,6 +1,7 @@
 from graphene import Mutation, Int, Boolean
 from ..types.farm import Farm, InputFarm
-
+from odoo.exceptions import UserError
+from odoo import _
 
 class CreateFarm(Mutation):
     class Arguments:
@@ -31,4 +32,8 @@ class RemoveFarm(Mutation):
     @staticmethod
     def mutate(self, info, id):
         env = info.context["env"]
-        return RemoveFarm(removed=env["agro.farm"].browse(id).unlink())
+        farm = env["agro.farm"].search([('id', '=', id)])
+        if farm:
+            return RemoveFarm(removed=farm.unlink())
+        raise UserError(_(f"Farm with ID: {id} not exist!"))
+        
