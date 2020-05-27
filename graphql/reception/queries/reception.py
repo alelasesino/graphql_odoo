@@ -1,6 +1,8 @@
 from graphene import Int
 from ... import FieldResolver
 from ..types.reception import Reception
+from odoo.exceptions import UserError
+from odoo import _
 
 
 class ReceptionQuery(FieldResolver):
@@ -10,4 +12,7 @@ class ReceptionQuery(FieldResolver):
     Output = Reception
 
     def resolve(self, info, id):
-        return info.context["env"]["stock.picking"].search([('id', '=', id)]) or None
+        reception = info.context["env"]["stock.picking"].search([('id', '=', id)])
+        if reception:
+            return reception
+        raise UserError(_(f"Reception with ID: {id} not exist!"))
