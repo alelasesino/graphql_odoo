@@ -4,6 +4,7 @@ from ..types.farm import Farm
 from odoo.exceptions import UserError
 from odoo import _
 
+
 class FarmQuery(FieldResolver):
     class Arguments:
         id = Int(required=True)
