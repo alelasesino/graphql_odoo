@@ -18,8 +18,8 @@ class Farm(OdooObjectType):
 
 
 class InputFarm(InputObjectType):
-    name = String()
+    name = String(required=True)
     description = String()
-    code = String()
-    partner_id = Int()
+    code = String(required=True)
+    partner_id = Int(required=True)
     parcels = List(InputParcel)
