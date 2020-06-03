@@ -16,6 +16,6 @@ class Product(OdooObjectType):
 
 
 class InputProduct(InputObjectType):
-    id = Int()
+    id = Int(required=True)
     lot = String()
-    quantity = Float()
+    quantity = Float(required=True)
