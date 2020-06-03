@@ -11,6 +11,6 @@ class Parcel(OdooObjectType):
 
 
 class InputParcel(InputObjectType):
-    name = String()
-    number = Int()
+    name = String(required=True)
+    number = Int(required=True)
     description = String()
