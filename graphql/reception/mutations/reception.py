@@ -105,4 +105,6 @@ class CreateReception(Mutation):
             for nosuggest in package.move_line_nosuggest_ids:
                 nosuggest.write({'picking_id': picking_created.id})
 
+        picking_created.button_validate()
+
         return picking_created
