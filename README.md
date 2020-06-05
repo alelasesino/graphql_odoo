@@ -8,15 +8,11 @@ Es un módulo creado para el software de planificación de recursos empresariale
 
 ## Visión General
 
-----------------------
-
 El módulo crea una interfaz de programación de aplicaciones (API) integrada en [Odoo Enterprise](https://www.odoo.com/es_ES/),  permitiendo acceder y modificar los datos de los diferentes modelos que tiene Odoo.
 
 Implementa un esquema mediante la librería de [Graphene](https://graphene-python.org/), en el cual se han definido una serie de consultas, mutaciones y tipos de datos.
 
 ## Uso
-
-----------------------
 
 Para usar este módulo, dirígete a la siguiente dirección para usar el entorno que ofrece GraphQL:
 
@@ -39,8 +35,6 @@ Para comenzar a trabajar con este módulo, es recomendable tener conocimiento de
 
 ## GraphiQL
 
-----------------------
-
 Este entorno nos permite realizar interactuar con el esquema de GraphQL mediante una aplicación web.
 
 ### Entorno
@@ -50,8 +44,6 @@ Este entorno nos permite realizar interactuar con el esquema de GraphQL mediante
 ![Queries](./screenshots/graphiql.png)
 
 ## Autenticación
-
-----------------------
 
 Para consumir la API es necesario haber realizado una autenticación previa. Los datos necesarios para realizar la autenticación es la siguiente:
 
@@ -68,8 +60,6 @@ curl \
 ```
 
 ## Créditos
-
-----------------------
 
 Este módulo ha sido creado como parte del proyecto de final de grado por Alejandro Pérez Álvarez.
 
