@@ -4,7 +4,7 @@
 [![Licence LGPL](https://img.shields.io/badge/licence-LGPL--3-blue.png)](http://www.gnu.org/licenses/lgpl-3.0-standalone.html)
 [![Code Coverage](https://img.shields.io/badge/github-OCA%2Frest--framework-lightgray.png?logo=github)](https://github.com/OCA/rest-framework/tree/13.0/graphql_base)
 
-Es un módulo creado para el software de planificación de recursos empresariales [Odoo](https://github.com/odoo/odoo). Este módulo es una implementación del módulo [graphql_base](https://github.com/OCA/rest-framework/tree/13.0/graphql_base) el cual pertenece al [rest-framework](https://github.com/OCA/rest-framework) creado por la comunidad de OCA.
+Es un módulo creado para el software de planificación de recursos empresariales [Odoo](https://github.com/odoo/odoo). Este módulo es una implementación del módulo [graphql_base](https://github.com/OCA/rest-framework/tree/13.0/graphql_base) el cual pertenece al [rest-framework](https://github.com/OCA/rest-framework/tree/13.0) creado por la comunidad de OCA.
 
 ## Visión General
 
