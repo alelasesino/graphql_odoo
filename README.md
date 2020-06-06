@@ -35,7 +35,7 @@ Para comenzar a trabajar con este módulo, es recomendable tener conocimiento de
 
 ## GraphiQL
 
-Este entorno nos permite realizar interactuar con el esquema de GraphQL mediante una aplicación web.
+Este entorno nos permite poder interactuar con el esquema de GraphQL mediante una aplicación web.
 
 ### Entorno
 
