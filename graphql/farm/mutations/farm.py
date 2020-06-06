@@ -13,6 +13,7 @@ class CreateFarm(Mutation):
     @staticmethod
     def mutate(self, info, farm):
 
+        # Podrían no existir parcelas para dicha finca
         if 'parcels' in farm:
             parcel_ids = []
             for parcel in farm['parcels']:
