@@ -1,6 +1,5 @@
 # GraphQL Odoo
 
-![Build Status](http://runbot.odoo.com/runbot/badge/flat/1/master.svg)
 [![Licence LGPL](https://img.shields.io/badge/licence-LGPL--3-blue.png)](http://www.gnu.org/licenses/lgpl-3.0-standalone.html)
 [![Code Coverage](https://img.shields.io/badge/github-OCA%2Frest--framework-lightgray.png?logo=github)](https://github.com/OCA/rest-framework/tree/13.0/graphql_base)
 
