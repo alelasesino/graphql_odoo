@@ -19,7 +19,7 @@ class ReceptionsQuery(FieldResolver):
             # se guarda dicho lote en el contexto 'args' para posteriormente 
             # filtrar los productos de dicha recepcion por el lote
             info.context["args"] = {'lot_filter': lot}
-            domain.append(('lot_id.name', '=', lot))
+            # domain.append(('lot_id.name', '=', lot))
 
         if today:
             # Se filtran las recepciones a las recepciones 
