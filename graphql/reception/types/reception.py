@@ -51,7 +51,17 @@ class Reception(OdooObjectType):
         # no lleva un filtrado por lotes
         if not 'args' in info.context:
             return products
-        return filter(lambda product: product.lot_id.name == info.context["args"]["lot_filter"], products)
+
+        lot_filter = info.context["args"]["lot_filter"]
+        farm = lot_filter[1:3]
+        parcel = lot_filter[-2:]
+
+        # return filter(lambda product: product.lot_id.name == info.context["args"]["lot_filter"], products)
+
+        return filter(
+            lambda product: 
+                str(product.lot_id.name)[1:3] == farm and 
+                str(product.lot_id.name)[-2:] == parcel, products)
 
 
 class InputReception(InputObjectType):
