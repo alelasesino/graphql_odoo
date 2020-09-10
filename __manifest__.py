@@ -20,10 +20,7 @@
     'version': '0.1',
     "license": "LGPL-3",
     "development_status": "Beta",
-    
+
     # any module necessary for this one to work correctly
     'depends': ['base', 'graphql_base', 'stock', 'agro_fres'],
-
-    # external dependencies
-    'external_dependencies': {'python': ['graphene']},
 }
