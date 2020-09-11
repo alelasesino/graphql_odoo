@@ -22,5 +22,5 @@
     "development_status": "Beta",
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'graphql_base', 'stock', 'agro_fres'],
+    'depends': ['base', 'graphql_base'],
 }
