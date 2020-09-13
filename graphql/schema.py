@@ -13,17 +13,19 @@ def obtain_schema(modules) -> Schema:
             query = getattr(import_module(
                 f"odoo.addons.{module.name}"), "Query")
             queries.append(query)
-        except ImportError as e:
+        except (ImportError, AttributeError) as e:
             _logger.warning(f"Can't import queries from {module.name}!")
 
         try:
             mutation = getattr(import_module(
                 f"odoo.addons.{module.name}"), "Mutation")
             mutations.append(mutation)
-        except ImportError as e:
+        except (ImportError, AttributeError) as e:
             _logger.warning(f"Can't import mutations from {module.name}!")
 
     queries.append(ObjectType)
+    mutations.append(ObjectType)
+
     Query = type('Query', tuple(queries), {})
     Mutation = type('Mutation', tuple(mutations), {})
     options = {}
