@@ -1,15 +1,37 @@
+from importlib import import_module
+from logging import getLogger
 from graphene import Schema, ObjectType
 
-
-class Query(ObjectType):
-    pass
+_logger = getLogger(__name__)
 
 
-class Mutation(ObjectType):
-    pass
+def obtain_schema(modules) -> Schema:
+    queries = []
+    mutations = []
+    for module in modules:
+        try:
+            query = getattr(import_module(
+                f"odoo.addons.{module.name}"), "Query")
+            queries.append(query)
+        except ImportError as e:
+            _logger.warning(f"Can't import queries from {module.name}!")
 
+        try:
+            mutation = getattr(import_module(
+                f"odoo.addons.{module.name}"), "Mutation")
+            mutations.append(mutation)
+        except ImportError as e:
+            _logger.warning(f"Can't import mutations from {module.name}!")
 
-try:
-    schema = Schema(query=Query, mutation=Mutation)
-except AssertionError as e:
-    schema = Schema()
+    queries.append(ObjectType)
+    Query = type('Query', tuple(queries), {})
+    Mutation = type('Mutation', tuple(mutations), {})
+    options = {}
+
+    if len(queries) > 1:
+        options["query"] = Query
+
+    if len(mutations) > 1:
+        options["mutation"] = Mutation
+
+    return Schema(**options)
