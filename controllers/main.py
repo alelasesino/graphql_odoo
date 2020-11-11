@@ -3,10 +3,13 @@ from odoo.addons.graphql_base import GraphQLControllerMixin
 from ..graphql.schema import obtain_schema
 
 
+GRAPHQL_MODULES = ["graphql_stock"]
+
+
 class GraphQLController(Controller, GraphQLControllerMixin):
 
     # The GraphiQL route, providing an IDE for developers
-    @route("/graphiql", auth="user")
+    @route("/graphiql", auth="public")  # CHANGE TO auth=user ON PRODUCTION
     def graphiql(self, **kwargs):
         return self._handle_graphiql_request(obtain_schema(self.__obtain_modules_installed()))
 
@@ -19,14 +22,13 @@ class GraphQLController(Controller, GraphQLControllerMixin):
     # The graphql route, for applications.
     # Note csrf=False: you may want to apply extra security
     # (such as origin restrictions) to this route.
-    @route("/graphql", auth="user", csrf=False)
+    @route("/graphql", auth="public", csrf=False)  # CHANGE TO auth=user ON PRODUCTION
     def graphql(self, **kwargs):
         return self._handle_graphql_request(obtain_schema(self.__obtain_modules_installed()))
 
     # Obtain modules installed related graphql
     # that contains queries and mutations for the schema
     def __obtain_modules_installed(self):
-        modules = ["graphql_stock"]
-        condition = [('name', 'in', modules), ('state', '=', 'installed')]
-        modules_installed = request.env['ir.module.module'].search(condition)
+        domain = [('name', 'in', GRAPHQL_MODULES), ('state', '=', 'installed')]
+        modules_installed = request.env['ir.module.module'].search(domain)
         return modules_installed
