@@ -32,6 +32,7 @@ class Palet(OdooObjectType):
     total_kilos = Int()
     lines = List(PaletLine)
     state = String()
+    sale_state = String()
 
     @staticmethod
     def resolve_total_quantity(root, info):
