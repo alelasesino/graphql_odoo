@@ -10,6 +10,7 @@ class Product(OdooObjectType):
     image = String()
     weight = Float()
     uom = String()
+    tracking = String()
 
     @staticmethod
     def resolve_image(root, info):
