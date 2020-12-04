@@ -3,7 +3,7 @@ from odoo.addons.graphql_base import GraphQLControllerMixin
 from ..graphql.schema import obtain_schema
 
 
-GRAPHQL_MODULES = ["graphql_stock", "graphql_mrp", "graphql_sale"]
+GRAPHQL_MODULES = ["graphql_stock", "graphql_mrp", "graphql_sale", "graphql_purchase"]
 
 
 class GraphQLController(Controller, GraphQLControllerMixin):
