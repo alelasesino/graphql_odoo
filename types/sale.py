@@ -32,6 +32,10 @@ class SaleOrder(OdooObjectType):
     palets = List(Palet)
 
     @staticmethod
+    def resolve_state(root, info):
+        return "sold" if root.is_sold else root.state
+
+    @staticmethod
     def resolve_order_lines(root, info):
         return root.order_line
 
