@@ -41,5 +41,9 @@ class PurchaseOrder(OdooObjectType):
     order_lines = List(PurchaseOrderLine)
 
     @staticmethod
+    def resolve_state(root, info):
+        return "purchased" if root.is_purchased else root.state
+
+    @staticmethod
     def resolve_order_lines(root, info):
         return root.order_line
