@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="view_farm_parcel_form_inherit" model="ir.ui.view">
+    <field name="name">agro.parcel.property.form.inherit</field>
+    <field name="model">agro.farm.parcel</field>
+    <field name="inherit_id" ref="agro_fres.farm_parcel_form" />
+    <field name="arch" type="xml">
+
+      <xpath expr="//field[@name='farm_id']" position="after">
+        <field name="color" widget="color" />
+      </xpath>
+
+    </field>
+  </record>
+
+</odoo>
