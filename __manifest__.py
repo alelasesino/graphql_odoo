@@ -22,5 +22,11 @@
     "development_status": "Beta",
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'graphql_base'],
+    'depends': ['base', 'graphql_base', 'agro_fres'],
+
+    'data': [
+        'views/parcel_views.xml',
+        'views/product_template_view.xml',
+        'security/ir.model.access.csv',
+    ],
 }
