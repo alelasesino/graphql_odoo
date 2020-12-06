@@ -1,6 +1,7 @@
 from odoo.addons.graphql_base import OdooObjectType
 from graphene import InputObjectType, Int, Float, List, String, Field
 from .product import Product
+from .parcel import Parcel
 
 
 class InputStockMoveLine(InputObjectType):
@@ -11,14 +12,10 @@ class InputStockMoveLine(InputObjectType):
 
 class Location(OdooObjectType):
     id = Int()
-    parcel_id = Int()
+    parcel_id = Field(Parcel)
     name = String()
     parent_name = String()
     complete_name = String()
-
-    @staticmethod
-    def resolve_parcel_id(root, info):
-        return root.parcel_id.id
 
     @staticmethod
     def resolve_parent_name(root, info):
