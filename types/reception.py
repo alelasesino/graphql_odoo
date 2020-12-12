@@ -22,7 +22,7 @@ class Location(OdooObjectType):
         return root.location_id.name
 
 
-class FruitReceptionLine(OdooObjectType):
+class ReceptionLine(OdooObjectType):
     id = Int()
     product_id = Field(Product)
     location_id = Field(Location)
@@ -40,12 +40,12 @@ class FruitReceptionLine(OdooObjectType):
         return ""
 
 
-class FruitReception(OdooObjectType):
+class Reception(OdooObjectType):
     id = Int()
     name = String()
     time = String()
     state = String()
-    lines = List(FruitReceptionLine)
+    lines = List(ReceptionLine)
 
     @staticmethod
     def resolve_time(root, info):

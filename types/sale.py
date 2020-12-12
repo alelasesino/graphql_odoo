@@ -1,7 +1,7 @@
 from odoo.addons.graphql_base import OdooObjectType
 from graphene import Int, String, Field, List, DateTime, Float
 from .product import Product
-from .fruit_reception import Location
+from .reception import Location
 from .palet import Palet
 from .partner import Partner
 
