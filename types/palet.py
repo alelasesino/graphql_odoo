@@ -1,8 +1,14 @@
 from odoo.addons.graphql_base import OdooObjectType
-from graphene import Int, String, Field, List
+from graphene import InputObjectType, Int, String, Field, List
 from .product import Product
 from .reception import Location
 from .partner import Partner
+
+
+class InputPaletLine(InputObjectType):
+    move_line_id = Int()
+    kilos = Int()
+    quantity = Int()
 
 
 class PaletLine(OdooObjectType):
