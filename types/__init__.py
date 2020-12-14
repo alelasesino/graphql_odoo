@@ -1,5 +1,5 @@
 from .reception import InputStockMoveLine, Reception, Location
-from .palet import Palet
+from .palet import Palet, InputPaletLine
 from .parcel import Parcel
 from .partner import Partner
 from .product import Product
