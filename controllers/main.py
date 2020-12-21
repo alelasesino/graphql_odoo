@@ -22,7 +22,7 @@ class GraphQLController(Controller, GraphQLControllerMixin):
     # The graphql route, for applications.
     # Note csrf=False: you may want to apply extra security
     # (such as origin restrictions) to this route.
-    @route("/graphql", auth="user", csrf=False, cors="app.fresperez.net")
+    @route("/graphql", auth="user", csrf=False)
     def graphql(self, **kwargs):
         return self._handle_graphql_request(obtain_schema(self.__obtain_modules_installed()))
 
