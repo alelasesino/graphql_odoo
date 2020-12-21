@@ -9,9 +9,9 @@ GRAPHQL_MODULES = ["graphql_stock", "graphql_mrp", "graphql_sale", "graphql_purc
 class GraphQLController(Controller, GraphQLControllerMixin):
 
     # The GraphiQL route, providing an IDE for developers
-    @route("/graphiql", auth="user")
-    def graphiql(self, **kwargs):
-        return self._handle_graphiql_request(obtain_schema(self.__obtain_modules_installed()))
+    # @route("/graphiql", auth="user")
+    # def graphiql(self, **kwargs):
+    #     return self._handle_graphiql_request(obtain_schema(self.__obtain_modules_installed()))
 
     # Optional monkey patch, needed to accept application/json GraphQL
     # requests. If you only need to accept GET requests or POST
@@ -22,7 +22,7 @@ class GraphQLController(Controller, GraphQLControllerMixin):
     # The graphql route, for applications.
     # Note csrf=False: you may want to apply extra security
     # (such as origin restrictions) to this route.
-    @route("/graphql", auth="user", csrf=False)
+    @route("/graphql", auth="user", csrf=False, cors="app.fresperez.net")
     def graphql(self, **kwargs):
         return self._handle_graphql_request(obtain_schema(self.__obtain_modules_installed()))
 
