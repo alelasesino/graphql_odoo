@@ -10,6 +10,5 @@ class Farm(OdooObjectType):
 class Parcel(OdooObjectType):
     id = Int()
     name = String()
-    variety = String()
     color = String()
     farm_id = Field(Farm)
