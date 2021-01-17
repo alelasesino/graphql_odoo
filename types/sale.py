@@ -4,6 +4,7 @@ from .product import Product
 from .reception import Location
 from .palet import Palet
 from .partner import Partner
+from .cmr import Cmr
 
 
 class SaleOrderLine(OdooObjectType):
@@ -30,6 +31,7 @@ class SaleOrder(OdooObjectType):
     state = String()
     order_lines = List(SaleOrderLine)
     palets = List(Palet)
+    cmr_id = Field(Cmr)
 
     @staticmethod
     def resolve_state(root, info):
@@ -42,3 +44,7 @@ class SaleOrder(OdooObjectType):
     @staticmethod
     def resolve_palets(root, info):
         return root.palet_ids.sorted('name', reverse=True)
+
+    @staticmethod
+    def resolve_cmr_id(root, info):
+        return root.cmr_ids
