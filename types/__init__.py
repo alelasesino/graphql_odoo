@@ -6,3 +6,5 @@ from .product import Product
 from .purchase import PurchaseOrder, InputPurchaseOrderLine, InputUpdatePurchaseOrderLine
 from .sale import SaleOrder
 from .stock import StockQuant
+from .cmr import Cmr, InputCmr
+from .carrier import CarrierCompany
