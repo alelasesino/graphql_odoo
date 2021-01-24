@@ -8,7 +8,7 @@ _logger = getLogger(__name__)
 def obtain_schema(modules) -> Schema:
     queries = []
     mutations = []
-    subscriptions = []
+    # subscriptions = []
     for module in modules:
         try:
             query = getattr(import_module(
@@ -24,20 +24,20 @@ def obtain_schema(modules) -> Schema:
         except (ImportError, AttributeError) as e:
             _logger.warning(f"Can't import mutations from {module.name}!")
 
-        try:
-            subscription = getattr(import_module(
-                f"odoo.addons.{module.name}"), "Subscription")
-            subscriptions.append(subscription)
-        except (ImportError, AttributeError) as e:
-            _logger.warning(f"Can't import subscriptions from {module.name}!")
+        # try:
+        #     subscription = getattr(import_module(
+        #         f"odoo.addons.{module.name}"), "Subscription")
+        #     subscriptions.append(subscription)
+        # except (ImportError, AttributeError) as e:
+        #     _logger.warning(f"Can't import subscriptions from {module.name}!")
 
     queries.append(ObjectType)
     mutations.append(ObjectType)
-    subscriptions.append(ObjectType)
+    # subscriptions.append(ObjectType)
 
     Query = type('Query', tuple(queries), {})
     Mutation = type('Mutation', tuple(mutations), {})
-    Subscription = type('Subscription', tuple(subscriptions), {})
+    # Subscription = type('Subscription', tuple(subscriptions), {})
     options = {}
 
     if len(queries) > 1:
@@ -46,7 +46,7 @@ def obtain_schema(modules) -> Schema:
     if len(mutations) > 1:
         options["mutation"] = Mutation
 
-    if len(subscriptions) > 1:
-        options["subscription"] = Subscription
+    # if len(subscriptions) > 1:
+    #     options["subscription"] = Subscription
 
     return Schema(**options)
