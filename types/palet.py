@@ -9,6 +9,7 @@ class InputPaletLine(InputObjectType):
     move_line_id = Int()
     kilos = Int()
     quantity = Int()
+    produce_product = Int()
 
 
 class PaletLine(OdooObjectType):
@@ -21,12 +22,16 @@ class PaletLine(OdooObjectType):
     uom = String()
 
     @staticmethod
+    def resolve_product_id(root, info):
+        return root.produce_product_id
+
+    @staticmethod
     def resolve_lot(root, info):
         return root.lot_id.name
 
     @staticmethod
     def resolve_uom(root, info):
-        return "Cajas" if root.product_uom_id.name == "Unidades" else root.product_uom_id.name
+        return "Cajas" if root.produce_product_id.uom_id.name == "Unidades" else root.product_uom_id.name
 
 
 class Palet(OdooObjectType):
