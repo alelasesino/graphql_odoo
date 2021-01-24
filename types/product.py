@@ -1,5 +1,5 @@
 from odoo.addons.graphql_base import OdooObjectType
-from graphene import String, Int, Float
+from graphene import String, Int, Float, List
 
 
 class Product(OdooObjectType):
@@ -12,6 +12,7 @@ class Product(OdooObjectType):
     weight = Float()
     uom = String()
     tracking = String()
+    produce_products = List(lambda: Product)
 
     @staticmethod
     def resolve_image(root, info):
@@ -26,3 +27,9 @@ class Product(OdooObjectType):
     @staticmethod
     def resolve_uom(root, info):
         return "Cajas" if root.uom_name == "Unidades" else root.uom_name
+
+    @staticmethod
+    def resolve_produce_products(root, info):
+        env = info.context["env"]
+        bom_ids = env['mrp.bom'].search([('bom_line_ids.product_id', '=', root.id)])
+        return bom_ids.mapped("product_id")
