@@ -12,3 +12,4 @@ class Parcel(OdooObjectType):
     name = String()
     color = String()
     farm_id = Field(Farm)
+    description = String()
