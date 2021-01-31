@@ -62,7 +62,7 @@ class Palet(OdooObjectType):
     def resolve_zpl(root, info):
         lines = []
         partner = {}
-        palet_ezpl = root.env['ir.config_parameter'].get_param('agro_stock.palet_ezpl')
+        palet_ezpl = root.env['ir.config_parameter'].get_param('agro_stock.palet_ezpl', '')
 
         def get_safe_partner_field(field, *args):
             if not root.partner_id:
