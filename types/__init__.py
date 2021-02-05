@@ -7,4 +7,4 @@ from .purchase import PurchaseOrder, InputPurchaseOrderLine, InputUpdatePurchase
 from .sale import SaleOrder
 from .stock import StockQuant
 from .cmr import Cmr, InputCmr
-from .carrier import CarrierCompany
+from .carrier import CarrierCompany, InputCarrierCompany
