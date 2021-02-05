@@ -74,9 +74,10 @@ class Palet(OdooObjectType):
         def get_barcode_128(weight):
             return f"21{root.id:05}&G3102{weight*100:06}"
 
+        order_lines = root._prepare_order_lines_group()
         for i in range(3):
-            quantity = int(root.palet_line_ids[i].quantity) if len(root.palet_line_ids) > i else ""
-            description = root.palet_line_ids[i].produce_product_id.code if len(root.palet_line_ids) > i else ""
+            quantity = int(order_lines[i][2]['product_uom_qty']) if len(order_lines) > i else ""
+            description = root.env['product.product'].browse(order_lines[i][2]['product_id']).code if len(order_lines) > i else ""
             lines.append({"quantity": quantity, "description": description})
 
         weight = int(sum([line.kilos for line in root.palet_line_ids]))
