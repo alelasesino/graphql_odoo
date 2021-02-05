@@ -8,6 +8,8 @@ class Partner(OdooObjectType):
     city = String()
     country = String()
     image = String()
+    customer_rank = Int()
+    supplier_rank = Int()
 
     @staticmethod
     def resolve_city(root, info):
