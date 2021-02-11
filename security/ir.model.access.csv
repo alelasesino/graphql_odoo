@@ -1,3 +1,5 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_agro_farm_parcel,agro.farm.parcel,model_agro_farm_parcel,,1,1,1,1
 access_product_template,product.template,model_product_template,,1,1,1,1
+access_product_product,product.product,model_product_product,,1,1,1,1
+access_res_partner,res.partner,model_res_partner,,1,1,1,1
