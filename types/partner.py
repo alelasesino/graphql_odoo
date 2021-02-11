@@ -8,6 +8,7 @@ class Partner(OdooObjectType):
     city = String()
     country = String()
     image = String()
+    color = String()
     customer_rank = Int()
     supplier_rank = Int()
 
@@ -28,3 +29,7 @@ class Partner(OdooObjectType):
         if root.image_128:
             return root.image_128.decode("utf-8")
         return ""
+
+    @staticmethod
+    def resolve_color(root, info):
+        return root.colour if root.colour else ""
