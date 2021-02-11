@@ -11,6 +11,7 @@ class Product(OdooObjectType):
     color = String()
     weight = Float()
     uom = String()
+    priority = Int()
     tracking = String()
     produce_products = List(lambda: Product)
 
