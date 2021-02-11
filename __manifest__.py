@@ -26,6 +26,7 @@
 
     'data': [
         'views/parcel_views.xml',
+        'views/product_product_view.xml',
         'views/product_template_view.xml',
         'views/res_partner_view.xml',
         'security/ir.model.access.csv',
