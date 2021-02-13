@@ -2,7 +2,6 @@ from odoo.addons.graphql_base import OdooObjectType
 from graphene import Int, String, Field, List, DateTime, Float
 from .product import Product
 from .reception import Location
-from .palet import Palet
 from .partner import Partner
 from .cmr import Cmr
 
@@ -30,12 +29,12 @@ class SaleOrder(OdooObjectType):
     date_order = DateTime()
     state = String()
     order_lines = List(SaleOrderLine)
-    palets = List(Palet)
+    palets = List(lambda: Palet)
     cmr_id = Field(Cmr)
 
     @staticmethod
     def resolve_state(root, info):
-        return "sold" if root.is_sold else root.state
+        return "sold" if root.delivery_state == "done" else root.state
 
     @staticmethod
     def resolve_order_lines(root, info):
@@ -48,3 +47,6 @@ class SaleOrder(OdooObjectType):
     @staticmethod
     def resolve_cmr_id(root, info):
         return root.cmr_ids
+
+
+from .palet import Palet
