@@ -3,6 +3,7 @@ from graphene import InputObjectType, Int, String, Field, List
 from .product import Product
 from .reception import Location
 from .partner import Partner
+from .sale import SaleOrder
 
 
 class InputPaletLine(InputObjectType):
@@ -44,7 +45,7 @@ class Palet(OdooObjectType):
     lines = List(PaletLine)
     zpl = String()
     state = String()
-    sale_state = String()
+    order_id = Field(SaleOrder)
 
     @staticmethod
     def resolve_total_quantity(root, info):
