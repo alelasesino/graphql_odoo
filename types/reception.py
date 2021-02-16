@@ -28,6 +28,7 @@ class ReceptionLine(OdooObjectType):
     location_id = Field(Location)
     lot = String()
     quantity = Float()
+    uom = String()
 
     @staticmethod
     def resolve_quantity(root, info):
@@ -38,6 +39,10 @@ class ReceptionLine(OdooObjectType):
         if root.lot_id:
             return root.lot_id.name
         return ""
+
+    @staticmethod
+    def resolve_uom(root, info):
+        return "Cajas" if root.product_uom_id.name == "Unidades" else root.product_uom_id.name
 
 
 class Reception(OdooObjectType):
