@@ -1,5 +1,5 @@
 from odoo.addons.graphql_base import OdooObjectType
-from graphene import InputObjectType, Int, String, Field, List
+from graphene import InputObjectType, Int, String, Field, List, Float
 from .product import Product
 from .reception import Location
 from .partner import Partner
@@ -8,7 +8,7 @@ from .sale import SaleOrder
 
 class InputPaletLine(InputObjectType):
     move_line_id = Int()
-    kilos = Int()
+    kilos = Float()
     quantity = Int()
     produce_product = Int()
 
@@ -19,7 +19,7 @@ class PaletLine(OdooObjectType):
     location_id = Field(Location)
     lot = String()
     quantity = Int()
-    kilos = Int()
+    kilos = Float()
     uom = String()
 
     @staticmethod
@@ -41,7 +41,7 @@ class Palet(OdooObjectType):
     code = String()
     partner_id = Field(Partner)
     total_quantity = Int()
-    total_kilos = Int()
+    total_kilos = Float()
     lines = List(PaletLine)
     zpl = String()
     state = String()

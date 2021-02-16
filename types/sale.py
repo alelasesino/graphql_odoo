@@ -10,7 +10,7 @@ class SaleOrderLine(OdooObjectType):
     id = Int()
     product_id = Field(Product)
     quantity = Int()
-    kilos = Int()
+    kilos = Float()
     price_unit = Float()
 
     @staticmethod
