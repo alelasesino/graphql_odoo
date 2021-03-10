@@ -9,8 +9,8 @@ class Partner(OdooObjectType):
     country = String()
     image = String()
     color = String()
-    customer_rank = Int()
-    supplier_rank = Int()
+    sale_order_count = Int()
+    purchase_order_count = Int()
 
     @staticmethod
     def resolve_city(root, info):
