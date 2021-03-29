@@ -48,13 +48,13 @@ class ReceptionLine(OdooObjectType):
 class Reception(OdooObjectType):
     id = Int()
     name = String()
-    time = String()
+    datetime = String()
     state = String()
     lines = List(ReceptionLine)
 
     @staticmethod
-    def resolve_time(root, info):
-        return root.scheduled_date.strftime("%H:%M")
+    def resolve_datetime(root, info):
+        return root.scheduled_date
 
     @staticmethod
     def resolve_lines(root, info):
