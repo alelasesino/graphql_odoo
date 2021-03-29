@@ -22,6 +22,7 @@ class PurchaseOrderLine(OdooObjectType):
     price_unit = Float()
     discount = Float()
     lot = String()
+    uom = String()
 
     @staticmethod
     def resolve_quantity(root, info):
@@ -31,11 +32,16 @@ class PurchaseOrderLine(OdooObjectType):
     def resolve_lot(root, info):
         return root.lot_name if root.lot_name else ""
 
+    @staticmethod
+    def resolve_uom(root, info):
+        return root.product_uom.name
+
 
 class PurchaseOrder(OdooObjectType):
     id = Int()
     name = String()
     partner_id = Field(Partner)
+    partner_ref = String()
     date_order = DateTime()
     state = String()
     order_lines = List(PurchaseOrderLine)
