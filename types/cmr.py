@@ -12,6 +12,7 @@ class InputCmr(InputObjectType):
     temperature = Int()
     destiny_street = String()
     destiny_country = String()
+    palet_count = Int()
     palet_count_received = Int()
     signature = String()
 
@@ -43,6 +44,7 @@ class Cmr(OdooObjectType):
     destiny_street = String()
     destiny_country = String()
     cmr_lines = List(CmrLine)
+    palet_count = Int()
     palet_count_received = Int()
     state = String()
 
