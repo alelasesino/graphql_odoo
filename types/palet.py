@@ -40,6 +40,7 @@ class Palet(OdooObjectType):
     name = String()
     code = String()
     partner_id = Field(Partner)
+    destiny_partner_id = Field(Partner)
     total_quantity = Int()
     total_kilos = Float()
     lines = List(PaletLine)
